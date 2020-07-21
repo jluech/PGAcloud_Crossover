@@ -6,7 +6,7 @@ from utilities.utils import Crossers, forward_crosser
 
 def apply_crossover(individual1, individual2):
     # Applies the chosen selection operator on the population and returns a list of pairs [{p1: x, p2: y}]
-    logging.debug("Performing selection on individuals:")
+    logging.debug("Performing crossover on individuals:")
     logging.debug("{pop_}".format(
         pop_=individual1
     ))

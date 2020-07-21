@@ -6,12 +6,12 @@ import pika
 from crossover.crossover import apply_crossover
 from message_handler.message_handler import MessageHandler
 
-QUEUE_NAME = "selection"
+QUEUE_NAME = "crossover"
 
 
 def receive_selection_callback(channel, method, properties, body):
     population = body.get("payload")
-    logging.debug("rMQ:{queue_}: Received selection request for population: {pop_}".format(
+    logging.debug("rMQ:{queue_}: Received crossover request for population: {pop_}".format(
         queue_=QUEUE_NAME,
         pop_=population,
     ))
@@ -74,7 +74,7 @@ class RabbitMessageQueue(MessageHandler):
             on_message_callback=receive_selection_callback,
             auto_ack=True
         )
-        logging.debug("rMQ:{queue_}: Waiting for selection requests.".format(
+        logging.debug("rMQ:{queue_}: Waiting for crossover requests.".format(
             queue_=QUEUE_NAME
         ))
         channel.start_consuming()
