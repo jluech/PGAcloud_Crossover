@@ -5,13 +5,13 @@ from utilities.utils import Crossers, forward_crosser, get_property
 
 
 def apply_crossover(individual1, individual2):
-    # Applies the chosen selection operator on the population and returns a list of pairs [{p1: x, p2: y}]
-    logging.debug("Performing crossover on individuals:")
-    logging.debug("{pop_}".format(
-        pop_=individual1
+    # Applies the chosen crossover operator on the two individuals and returns a pair {p1: x, p2: y}
+    logging.info("Performing crossover on individuals:")
+    logging.info("{ind_}".format(
+        ind_=individual1
     ))
-    logging.debug("{pop_}".format(
-        pop_=individual2
+    logging.info("{ind_}".format(
+        ind_=individual2
     ))
 
     crosser = get_crosser()
