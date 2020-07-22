@@ -1,6 +1,5 @@
 import logging
 import os
-from enum import Enum
 from re import match
 
 import yaml
@@ -8,16 +7,6 @@ import yaml
 __CROSSER = None
 __PGA_ID = None
 __PROPERTIES = {}
-
-
-class MessageHandlers(Enum):
-    RabbitMQ = "rabbitMQ",
-
-
-class Crossers(Enum):
-    OnePoint = "one_point",
-    MultiPoint = "multi_point",
-    Uniform = "uniform",
 
 
 def parse_yaml(yaml_file_path):
