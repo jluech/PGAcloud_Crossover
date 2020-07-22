@@ -10,21 +10,18 @@ QUEUE_NAME = "crossover"
 
 
 def receive_selection_callback(channel, method, properties, body):
-    population = body.get("payload")
-    logging.debug("rMQ:{queue_}: Received crossover request for population: {pop_}".format(
-        queue_=QUEUE_NAME,
-        pop_=population,
-    ))
+    pair = body.get("payload")
+
     logging.debug(body)  # TODO: remove
 
-    individuals = apply_crossover(population.ind1, population.ind2)
-    for pair in individuals:
-        remaining_destinations = body.get("destinations")
-        send_message_to_queue(
-            channel=channel,
-            destinations=remaining_destinations,
-            payload=pair
-        )
+    crossed_pair = apply_crossover(pair.ind1, pair.ind2)
+
+    remaining_destinations = body.get("destinations")
+    send_message_to_queue(
+        channel=channel,
+        destinations=remaining_destinations,
+        payload=crossed_pair
+    )
 
 
 def send_message_to_queue(channel, destinations, payload):
