@@ -7,14 +7,14 @@ from population.pair import Pair
 
 class AbstractCrossover(ABC):
     @ abstractmethod
-    def perform_crossover(self, individual1, individual2):
+    def perform_crossover(self, individual1, individual2, crossover_rate):
         # Perform the crossover on two Individual's.
         # Returns a Pair of two Individual's.
         pass
 
 
 class OnePointCrossover(AbstractCrossover):
-    def perform_crossover(self, individual1, individual2):
+    def perform_crossover(self, individual1, individual2, crossover_rate):
         solution_length = individual1.solution.__len__()
         if solution_length != individual2.solution.__len__():
             raise Exception("Crossover aborted: individuals solution strings are of different length!")
@@ -32,10 +32,10 @@ class OnePointCrossover(AbstractCrossover):
 
 
 class MultiPointCrossover(AbstractCrossover):
-    def perform_crossover(self, individual1, individual2):
+    def perform_crossover(self, individual1, individual2, crossover_rate):
         pass
 
 
 class UniformCrossover(AbstractCrossover):
-    def perform_crossover(self, individual1, individual2):
+    def perform_crossover(self, individual1, individual2, crossover_rate):
         pass
