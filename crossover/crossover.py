@@ -1,7 +1,7 @@
 import logging
 
 from crossover.crossers import OnePointCrossover, MultiPointCrossover, UniformCrossover
-from utilities.utils import Crossers, forward_crosser
+from utilities.utils import Crossers, forward_crosser, get_property
 
 
 def apply_crossover(individual1, individual2):
@@ -15,7 +15,8 @@ def apply_crossover(individual1, individual2):
     ))
 
     crosser = get_crosser()
-    return crosser.perform_crossover(individual1, individual2)
+    crossover_rate = get_crossover_rate()
+    return crosser.perform_crossover(individual1, individual2, crossover_rate)
 
 
 def get_crosser():
@@ -30,3 +31,9 @@ def get_crosser():
         raise Exception("UniformCrossover not implemented yet!")
     else:
         raise Exception("No valid Crosser defined!")
+
+
+def get_crossover_rate():
+    rate = float(get_property("CROSSOVER_RATE"))
+    logging.info("CROSSOVER_RATE={_rate} retrieved.".format(_rate=rate))
+    return rate
