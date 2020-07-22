@@ -9,7 +9,7 @@ from message_handler.message_handler import MessageHandler
 QUEUE_NAME = "crossover"
 
 
-def receive_selection_callback(channel, method, properties, body):
+def receive_crossover_callback(channel, method, properties, body):
     pair = body.get("payload")
 
     logging.debug(body)  # TODO: remove
@@ -76,7 +76,7 @@ class RabbitMessageQueue(MessageHandler):
         # Actively listen for messages in queue and perform callback on receive.
         channel.basic_consume(
             queue=QUEUE_NAME,
-            on_message_callback=receive_selection_callback,
+            on_message_callback=receive_crossover_callback,
             auto_ack=True
         )
         logging.info("rMQ:{queue_}: Waiting for crossover requests.".format(
