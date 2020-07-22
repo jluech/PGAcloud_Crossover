@@ -1,7 +1,7 @@
 import logging
 
-from crossover.crossers import OnePointCrossover, MultiPointCrossover, UniformCrossover
-from utilities.utils import Crossers, forward_crosser, get_property
+from crossover.crossers import Crossers, OnePointCrossover, MultiPointCrossover, UniformCrossover
+from utilities.utils import forward_crosser, get_property
 
 
 def apply_crossover(individual1, individual2):

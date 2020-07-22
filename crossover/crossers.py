@@ -1,8 +1,15 @@
 import random
 from abc import ABC, abstractmethod
+from enum import Enum
 
 from population.individual import Individual
 from population.pair import Pair
+
+
+class Crossers(Enum):
+    OnePoint = "one_point",
+    MultiPoint = "multi_point",
+    Uniform = "uniform",
 
 
 class AbstractCrossover(ABC):
