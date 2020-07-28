@@ -6,12 +6,9 @@ from utilities.utils import forward_crosser, get_property
 
 def apply_crossover(individual1, individual2):
     # Applies the chosen crossover operator on the two individuals and returns a pair {p1: x, p2: y}
-    logging.info("Performing crossover on individuals:")
-    logging.info("{ind_}".format(
-        ind_=individual1
-    ))
-    logging.info("{ind_}".format(
-        ind_=individual2
+    logging.info("Performing crossover on individuals {ind1_}  and  {ind2_}".format(
+        ind1_=individual1,
+        ind2_=individual2,
     ))
 
     crosser = get_crosser()
