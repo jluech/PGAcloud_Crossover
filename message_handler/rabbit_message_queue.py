@@ -11,7 +11,6 @@ from utilities import utils
 
 def receive_crossover_callback(channel, method, properties, body):
     queue_name = utils.get_messaging_source()
-    logging.info(body)  # TODO: remove
 
     pair_dict = json.loads(body)
     pair = []
@@ -75,7 +74,6 @@ class RabbitMessageQueue(MessageHandler):
         channel.basic_consume(
             queue=queue_name,
             on_message_callback=receive_crossover_callback,
-            auto_ack=True
         )
         logging.info("rMQ:{queue_}: Waiting for crossover requests.".format(
             queue_=queue_name
