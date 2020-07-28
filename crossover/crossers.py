@@ -3,7 +3,6 @@ from abc import ABC, abstractmethod
 from enum import Enum
 
 from population.individual import Individual
-from population.pair import Pair
 
 
 class Crossers(Enum):
@@ -35,7 +34,7 @@ class OnePointCrossover(AbstractCrossover):
             ind2_=individual2.solution[:crossover_point],  # first part of 2
             ind1_=individual1.solution[crossover_point:],  # second part of 1
         ))
-        return Pair(crossed1, crossed2)
+        return [crossed1, crossed2]
 
 
 class MultiPointCrossover(AbstractCrossover):
