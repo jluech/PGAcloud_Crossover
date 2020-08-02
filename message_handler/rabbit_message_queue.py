@@ -80,10 +80,6 @@ class RabbitMessageQueue(MessageHandler):
         ))
         channel.start_consuming()
 
-        # Close connection when finished. TODO: check if prematurely closing connection
-        logging.info("rMQ: CLOSING CONNECTION")
-        self.connection.close()
-
     def send_message(self, pair):
         # Define communication channel.
         channel = self.connection.channel()
